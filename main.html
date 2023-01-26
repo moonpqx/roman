@@ -7,6 +7,18 @@ body {
   background: pink;
   font-family: 'Poiret One', Segoe UI Light, cursive;
 }
+.button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: pink;
+  color: white;
+  padding: 14px 28px;
+  font-size: 64px;
+  cursor: pointer;
+  text-align: center;
+}
 #card {
   position: absolute;
   top: 35%;
@@ -294,43 +306,55 @@ body {
             }
 
             setInterval(() => {
-                const heart = new FlyingHeart(Math.random() * window.innerWidth, -100);
-                flyingHearts.push(heart);
-            }, 200);
-
-            setInterval(() => {
                 flyingHearts.forEach((heart) => heart.update());
             }, 10);
         </script>
+<script>
+  </script>
     </head>
     <body>
-        <body>  
-            <div id="card">
-              <center><h1>Walentynka dla Ciebie :)</h1></center>
-              <div class="heart" id="heart1">
-                <div id="half1">
-                  <div id="circle"></div>
-                  <div id="rec"></div>
-                </div>
-                <div id="half2">
-                  <div id="circle"></div>
-                  <div id="rec"></div>
-                </div>
-              </div>
-              <div id="message">
-                <h2>Zostań moją walentynką, Izabela :)</h2>
-              </div>
-              <div class="heart" id="heart2">
-                <div id="half1">
-                  <div id="circle"></div>
-                  <div id="rec"></div>
-                </div>
-                <div id="half2">
-                  <div id="circle"></div>
-                  <div id="rec"></div>
-                </div>
-              </div>
-            </div>
-          </body>
+      <div id="card" style="display: none;">
+        <center><h1>Walentynka dla Ciebie :)</h1></center>
+        <div class="heart" id="heart1">
+          <div id="half1">
+            <div id="circle"></div>
+            <div id="rec"></div>
+          </div>
+          <div id="half2">
+            <div id="circle"></div>
+            <div id="rec"></div>
+          </div>
+        </div>
+        <div id="message">
+          <h2>Zostań moją walentynką, Izabela :)</h2>
+        </div>
+        <div class="heart" id="heart2">
+          <div id="half1">
+            <div id="circle"></div>
+            <div id="rec"></div>
+          </div>
+          <div id="half2">
+            <div id="circle"></div>
+            <div id="rec"></div>
+          </div>
+        </div>
+      </div>
+      <button class="button" id="button" onclick="play()">Kliknji tutaj! xD</button>
     </body>
+    <audio controls loop style="display:none" id="my_audio">
+      <source src="river-flows-in-you.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    function play() {
+      document.getElementById('my_audio').play();
+      setInterval(() => {
+        const heart = new FlyingHeart(Math.random() * window.innerWidth, -100);
+        flyingHearts.push(heart);
+        const card = document.getElementById('card');
+        card.style = 'display: block';
+        const button = document.getElementById('button');
+        button.style = 'display: none';
+      }, 200);
+    }
+  </script>
 </html>
